@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7DDFE641-4B64-489E-A87A-AD61503B40F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{22884DB1-DE11-430D-8AE4-4E56375C15BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5478B5E0-237B-4FEC-9C04-0EEB5C00B1B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hotel", "Hotel", "{78EE2964-9DFE-496B-AE00-688BCE8F0198}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactInformationService", "ContactInformationService", "{F1BFCB36-2714-4001-861F-8465C8DC76B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{381C28FF-BB93-4FFC-A5B5-28CDDC8C066D}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22884DB1-DE11-430D-8AE4-4E56375C15BC} = {7DDFE641-4B64-489E-A87A-AD61503B40F2}
+		{5478B5E0-237B-4FEC-9C04-0EEB5C00B1B1} = {7DDFE641-4B64-489E-A87A-AD61503B40F2}
+		{78EE2964-9DFE-496B-AE00-688BCE8F0198} = {5478B5E0-237B-4FEC-9C04-0EEB5C00B1B1}
+		{F1BFCB36-2714-4001-861F-8465C8DC76B0} = {5478B5E0-237B-4FEC-9C04-0EEB5C00B1B1}
+		{381C28FF-BB93-4FFC-A5B5-28CDDC8C066D} = {5478B5E0-237B-4FEC-9C04-0EEB5C00B1B1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7CBC013-6ED7-4470-8DF9-ADB37A8BDDF8}
+	EndGlobalSection
+EndGlobal
