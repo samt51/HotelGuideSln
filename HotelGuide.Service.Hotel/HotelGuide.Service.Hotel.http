@@ -1,0 +1,6 @@
+@HotelGuide.Service.Hotel_HostAddress = http://localhost:5183
+
+GET {{HotelGuide.Service.Hotel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
