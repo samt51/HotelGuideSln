@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ContactInformationService.Application;
 
 namespace HotelGuide.Service.ContactInformationService.Controllers
 {

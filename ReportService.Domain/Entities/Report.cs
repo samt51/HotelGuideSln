@@ -1,7 +1,7 @@
 ﻿using HotelGuide.Shared.Common;
 using HotelGuide.Shared.Enums;
 
-namespace HotelGuide.Service.ReportService.Model
+namespace ReportService.Domain.Entities
 {
     public class Report : BaseEntity
     {
