@@ -1,8 +1,10 @@
-﻿using HotelGuide.Shared.Interfaces.Repositories;
+﻿using HotelGuide.Shared.Interfaces.MappingTo.AutoMapper;
+using HotelGuide.Shared.Interfaces.Repositories;
 using HotelGuide.Shared.Interfaces.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ReportService.Persistence.Concrete.MappingTo.AutoMap;
 using ReportService.Persistence.Concrete.Repositories;
 using ReportService.Persistence.Concrete.UnitOfWorks;
 using ReportService.Persistence.Context;
@@ -20,7 +22,7 @@ namespace ReportService.Persistence
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
-            //services.AddSingleton<IMapper, Mapper>();
+            services.AddSingleton<IMapper, Mapper>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }

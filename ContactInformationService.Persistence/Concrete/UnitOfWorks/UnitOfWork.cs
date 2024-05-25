@@ -77,5 +77,10 @@ namespace ContactInformationService.Persistence.Concrete.UnitOfWorks
         {
             return new WriteRepository<T>(dbContext);
         }
+
+        Task<bool> IUnitOfWork.SaveAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

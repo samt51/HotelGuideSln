@@ -45,9 +45,12 @@ namespace HotelService.Persistence.Concrete.Repositories
             if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include is not null) queryable = include(queryable);
 
-            //queryable.Where(predicate);
-
-            return await queryable.FirstOrDefaultAsync(predicate);
+            var data = await queryable.FirstOrDefaultAsync(predicate);
+            if (data is null)
+            {
+                throw new Exception($"{typeof(T).Name} is not Found");
+            }
+            return data;
         }
 
         public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
