@@ -19,6 +19,7 @@ namespace HotelService.Domain.Entities
         public string AuthorizedName { get; set; }
         public string AuthorizedSurName { get; set; }
         public string CompanyName { get; set; }
+        public IList<ContactInformation> ContactInformations { get; set; }
 
     }
 }

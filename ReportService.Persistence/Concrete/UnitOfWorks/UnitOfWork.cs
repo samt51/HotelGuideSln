@@ -42,7 +42,7 @@ namespace ReportService.Persistence.Concrete.UnitOfWorks
 
             try
             {
-                var result = await dbContext.SaveChangesAsync(); ;
+                var result = await dbContext.SaveChangesAsync(); 
                 return result;
             }
             catch (Exception ex)
@@ -75,6 +75,20 @@ namespace ReportService.Persistence.Concrete.UnitOfWorks
         IWriteRepository<T> IUnitOfWork.GetWriteRepository<T>()
         {
             return new WriteRepository<T>(dbContext);
+        }
+
+       public async Task<bool> SaveAsyncBool()
+        {
+            try
+            {
+                var result = await dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                RollBack();
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace HotelGuide.Shared.Middleware.Exceptions;
 public class ExceptionModel
 {
-    public Response<ExceptionModel> Response { get; set; }
+    public ResponseDto<ExceptionModel> Response { get; set; }
 
     public override string ToString()
     {

@@ -8,9 +8,12 @@ namespace HotelGuide.Shared
         public static IServiceCollection AddShared(this IServiceCollection services)
         {
 
+
             services.AddTransient<ExceptionMiddleware>();
 
-    
+
+
+
             return services;    
         }
     }

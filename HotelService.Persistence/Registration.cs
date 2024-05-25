@@ -1,6 +1,7 @@
-﻿using ContactInformationService.Persistence.Concrete.UnitOfWorks;
+﻿using HotelGuide.Shared.Interfaces.MappingTo.AutoMapper;
 using HotelGuide.Shared.Interfaces.Repositories;
 using HotelGuide.Shared.Interfaces.UnitOfWorks;
+using HotelService.Persistence.Concrete.MappingTo.AutoMap;
 using HotelService.Persistence.Concrete.Repositories;
 using HotelService.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +21,9 @@ namespace HotelService.Persistence
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
-            //services.AddSingleton<IMapper, Mapper>();
+            services.AddSingleton<IMapper, Mapper>();
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, HotelService.Persistence.Concrete.UnitOfWorks.UnitOfWork>();
         }
     }
 }

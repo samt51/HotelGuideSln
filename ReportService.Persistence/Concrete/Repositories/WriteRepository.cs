@@ -47,5 +47,10 @@ namespace ReportService.Persistence.Concrete.Repositories
             await Task.Run(() => Table.Update(entity));
             return entity;
         }
+
+        public void UpdateRange(IList<T> entities)
+        {
+             Table.UpdateRange(entities);
+        }
     }
 }

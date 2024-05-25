@@ -29,7 +29,9 @@ namespace HotelService.Persistence.Context
 
         #region DbSets
 
-        public DbSet<Hotel> Hotels{ get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<ContactInformation> ContactInformation { get; set; }
+        public DbSet<Maps> Maps { get; set; }
         #endregion
     }
 }

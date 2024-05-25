@@ -2,7 +2,11 @@ using Microsoft.OpenApi.Models;
 using HotelGuide.Shared.Middleware.Exceptions;
 using ContactInformationService.Application;
 using ContactInformationService.Persistence;
-
+using HotelGuide.Shared;
+using Microsoft.AspNetCore.HttpLogging;
+using Serilog;
+using Serilog.Core;
+using Serilog.Sinks.MSSqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +58,31 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddShared(builder.Configuration);
+
+
+Logger log = new LoggerConfiguration()
+    .WriteTo.File("logs/log.txt")
+    .WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), "logs", autoCreateSqlTable: true, columnOptions: new ColumnOptions
+    {
+
+    })
+     .Enrich.FromLogContext()
+    .MinimumLevel.Information()
+    .CreateLogger();
+
+builder.Host.UseSerilog(log);
+builder.Services.AddMemoryCache();
+
+
+builder.Services.AddHttpLogging(logging =>
+{
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestHeaders.Add("sec-ch-ua");
+    logging.MediaTypeOptions.AddText("application/javascript");
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+});
 
 
 

@@ -37,13 +37,13 @@ namespace HotelService.Persistence.Concrete.UnitOfWorks
         }
 
         public int Save() => dbContext.SaveChanges();
-        public async Task<int> SaveAsync()
+        public async Task<bool> SaveAsync()
         {
 
             try
             {
-                var result = await dbContext.SaveChangesAsync(); ;
-                return result;
+                var result = await dbContext.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -65,6 +65,21 @@ namespace HotelService.Persistence.Concrete.UnitOfWorks
                 var error = ex.InnerException?.Message;
 
                 throw;
+            }
+        }
+
+        public async Task<bool> SaveAsyncBool()
+        {
+            try
+            {
+                var result = await dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                RollBack();
+                throw new Exception(ex.Message);
+
             }
         }
 
