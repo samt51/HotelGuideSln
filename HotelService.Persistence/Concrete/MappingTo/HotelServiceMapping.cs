@@ -7,7 +7,7 @@ namespace HotelService.Persistence.Concrete.MappingTo
     {
         public HotelServiceMapping()
         {
-            //CreateMap<List<HotelService.Domain.Entities.ContactInformation>, List<CreatedContactInformationDto>>();
+            //CreateMap<IList<HotelService.Domain.Entities.ContactInformation>, IList<CreatedContactInformationDto>>();
             //CreateMap<HotelService.Domain.Entities.ContactInformation>, CreatedContactInformationDto>();
         }
     }
