@@ -20,17 +20,13 @@ namespace HotelService.Application.Feature.ContactInformation.Commands.DeleteCon
 
         public async Task<ResponseDto<DeleteContactByHotelIdResponse>> Handle(DeleteContactByHotelIdRequest request, CancellationToken cancellationToken)
         {
-            var data = await unitOfWork.GetReadRepository<Hotel>().GetAsync(x => x.Id == request.HotelId && !x.IsDeleted, x => x.Include(y => y.ContactInformations));
 
-            await _contactInformationBaseCase.ContactInformationIsNullOrEmpty(data.ContactInformations);
+            var contact = await unitOfWork.GetReadRepository<HotelService.Domain.Entities.ContactInformation>().GetAllAsync(x => !x.IsDeleted && x.HotelId == request.HotelId);
 
-            //var ids = new HashSet<Guid>(request.deletedContactInformationByHotelIdDtos.Select(e => e.InformationContentValueId));
+            await _contactInformationBaseCase.ContactInformationIsNullOrEmpty(contact);
 
-            //foreach (var id in data.ContactInformations.Where(x=>ids.Contains(x.Id)))
-            //{
-            //    id.IsDeleted = true;
-            //}
-            var query = from d1 in data.ContactInformations
+         
+            var query = from d1 in contact
                         join d2 in request.deletedContactInformationByHotelIdDtos on d1.Id equals d2.InformationContentValueId
                         select new HotelService.Domain.Entities.ContactInformation
                         {
@@ -44,9 +40,11 @@ namespace HotelService.Application.Feature.ContactInformation.Commands.DeleteCon
                             InformationType = d1.InformationType,
                         };
 
+            var list = query.ToList();
+
             unitOfWork.OpenTransaction();
 
-            unitOfWork.GetWriteRepository<HotelService.Domain.Entities.ContactInformation>().UpdateRange(query.ToList());
+            unitOfWork.GetWriteRepository<HotelService.Domain.Entities.ContactInformation>().UpdateRange(list);
 
             if (await unitOfWork.SaveAsyncBool())
             {

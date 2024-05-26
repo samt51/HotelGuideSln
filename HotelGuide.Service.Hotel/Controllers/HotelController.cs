@@ -16,11 +16,7 @@ namespace HotelGuide.Service.Hotel.Controllers
         {
             this.mediator = mediator;
         }
-        [HttpPost]
-        public async Task<ResponseDto<CreateContactByHotelIdResponse>> CreateContactByHotelId(CreateContactByHotelIdRequest request)
-        {
-            return await mediator.Send(request);
-        }
+       
         [HttpPost]
         public async Task<ResponseDto<CreateHotelCommandResponse>> Create(CreateHotelCommandRequest request)
         {

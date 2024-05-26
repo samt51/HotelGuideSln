@@ -1,4 +1,5 @@
-﻿using HotelGuide.Shared.Middleware.Exceptions;
+﻿using HotelGuide.Shared.Bases;
+using HotelGuide.Shared.Middleware.Exceptions;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,13 @@ namespace HotelService.Application
             var assembly = Assembly.GetExecutingAssembly();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+
+
+    
+            services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
+
+            services.AddTransient<ExceptionMiddleware>();
+
 
 
             services.Configure<ApiBehaviorOptions>(options =>
@@ -38,6 +46,17 @@ namespace HotelService.Application
 
             return services;
 
+        }
+        private static IServiceCollection AddRulesFromAssemblyContaining(
+           this IServiceCollection services,
+           Assembly assembly,
+           Type type)
+        {
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t).ToList();
+            foreach (var item in types)
+                services.AddTransient(item);
+
+            return services;
         }
     }
 }
