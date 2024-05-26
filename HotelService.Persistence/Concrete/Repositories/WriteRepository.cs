@@ -51,6 +51,7 @@ namespace HotelService.Persistence.Concrete.Repositories
 
         public void UpdateRange(IList<T> entities)
         {
+            Table.AttachRange(entities);
             Table.UpdateRange(entities);
         }
     }
