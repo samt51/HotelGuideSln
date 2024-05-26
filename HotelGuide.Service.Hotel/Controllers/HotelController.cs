@@ -2,6 +2,7 @@
 using HotelService.Application.Feature.ContactInformation.Commands.CreateContactByHotelId;
 using HotelService.Application.Feature.Hotels.Commands.CreateHotel;
 using HotelService.Application.Feature.Hotels.Commands.DeleteHotel;
+using HotelService.Application.Feature.Hotels.Queries.GetHotelInfo;
 using HotelService.Application.Feature.Hotels.Queries.GetHotelManagement;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,12 @@ namespace HotelGuide.Service.Hotel.Controllers
         {
             this.mediator = mediator;
         }
-       
+        [HttpGet]
+        public async Task<ResponseDto<GetHotelInfoQueryResponse>> GetHotelInfoByHotelId(Guid hotelId)
+        {
+            return await mediator.Send(new GetHotelInfoQueryRequest(hotelId));
+        }
+
         [HttpPost]
         public async Task<ResponseDto<CreateHotelCommandResponse>> Create(CreateHotelCommandRequest request)
         {
