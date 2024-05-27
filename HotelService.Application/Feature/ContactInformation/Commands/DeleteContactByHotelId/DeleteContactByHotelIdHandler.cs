@@ -3,10 +3,7 @@ using HotelGuide.Shared.Dtos.ResponseModel;
 using HotelGuide.Shared.Interfaces.MappingTo.AutoMapper;
 using HotelGuide.Shared.Interfaces.UnitOfWorks;
 using HotelService.Application.Feature.ContactInformation.BaseCases;
-using HotelService.Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.Design.Serialization;
 
 namespace HotelService.Application.Feature.ContactInformation.Commands.DeleteContactByHotelId
 {

@@ -6,7 +6,7 @@ namespace HotelService.Domain.Entities
     {
         public Hotel()
         {
-
+            ContactInformations = new List<ContactInformation>();
         }
         public Hotel(Guid id, string authorizedName, string authorizedSurName, string companyName)
         {

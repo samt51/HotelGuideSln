@@ -18,6 +18,12 @@ public class Mapper : HotelGuide.Shared.Interfaces.MappingTo.AutoMapper.IMapper
         return MapperContainer.Map<TSource, TDestination>(source);
     }
 
+    public IList<TDestination> Map<TDestination, TSource>(List<IList<TSource>> source, string? ignore = null)
+    {
+        Config<TDestination, TSource>(5, ignore);
+
+        return MapperContainer.Map<List<IList<TSource>>, IList<TDestination>>(source);
+    }
     public IList<TDestination> Map<TDestination, TSource>(IList<TSource> source, string? ignore = null)
     {
         Config<TDestination, TSource>(5, ignore);

@@ -1,5 +1,4 @@
 ﻿using HotelGuide.Shared.Dtos.ResponseModel;
-using HotelService.Application.Feature.ContactInformation.Commands.CreateContactByHotelId;
 using HotelService.Application.Feature.Hotels.Commands.CreateHotel;
 using HotelService.Application.Feature.Hotels.Commands.DeleteHotel;
 using HotelService.Application.Feature.Hotels.Queries.GetHotelInfo;

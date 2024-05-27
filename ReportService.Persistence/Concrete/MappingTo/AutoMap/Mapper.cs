@@ -1,13 +1,14 @@
 ﻿using AutoMapper.Internal;
 using AutoMapper;
 using ReportService.Persistence.Concrete.MappingTo;
+using HotelGuide.Shared.Interfaces.MappingTo.AutoMapper;
 
 namespace ReportService.Persistence.Concrete.MappingTo.AutoMap;
 
 public class Mapper : HotelGuide.Shared.Interfaces.MappingTo.AutoMapper.IMapper
 {
     public static List<TypePair> typePairs = new();
-    private IMapper MapperContainer;
+    private AutoMapper.IMapper MapperContainer;
     public Mapper()
     {
         InitializeMapper();
@@ -79,5 +80,10 @@ public class Mapper : HotelGuide.Shared.Interfaces.MappingTo.AutoMapper.IMapper
             });
             MapperContainer = config.CreateMapper();
         }
+    }
+
+    public IList<TDestination> Map<TDestination, TSource>(List<IList<TSource>> source, string? ignore = null)
+    {
+        throw new NotImplementedException();
     }
 }

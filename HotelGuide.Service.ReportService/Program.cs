@@ -1,5 +1,10 @@
 using Microsoft.OpenApi.Models;
 using HotelGuide.Shared.Middleware.Exceptions;
+using ReportService.Application;
+using HotelGuide.Shared;
+using ReportService.Persistence;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +55,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
+builder.Services.AddApplication();
+builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddShared();
+
 
 var app = builder.Build();
 
@@ -59,7 +68,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.ConfigureExceptionHandlingMiddleware();
+//app.ConfigureExceptionHandlingMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -9,7 +9,7 @@ public class ContactInformation : BaseEntity
     {
 
     }
-    public ContactInformation(InformationTypeEnum informationTypeEnum, string informationContent, Guid hotelId, Guid id)
+    public ContactInformation(Guid id,InformationTypeEnum informationTypeEnum, string informationContent, Guid hotelId )
     {
         this.Id = id;
         this.InformationType = informationTypeEnum;

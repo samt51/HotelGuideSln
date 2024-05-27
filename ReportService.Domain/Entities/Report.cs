@@ -5,8 +5,7 @@ namespace ReportService.Domain.Entities
 {
     public class Report : BaseEntity
     {
-        public DateTime DateRequested { get; private set; }
+        public DateTime DateRequested { get;  set; }
         public ReportStatusEnum ReportStatus { get; set; }
-
     }
 }
