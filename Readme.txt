@@ -11,3 +11,5 @@ Ayrýca Hotelservisin Persistence katmanýnda Configuration entityleri olup seed d
 Loglama olarak serilog kullandým ve GlobalExceptionError Middleware etkindir. Serilog ile tüm istek,yanýt ve errorlar hepsini tutar.
 
 Teþekkür ederim.
+
+s
