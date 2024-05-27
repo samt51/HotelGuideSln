@@ -15,6 +15,7 @@ namespace HotelService.Domain.Entities
             this.CityId = cityId;
             this.CountyId = countryId;
             this.DistrictId = districtId;
+
         }
         public string Description { get; set; }
         public Guid CityId { get; set; }
