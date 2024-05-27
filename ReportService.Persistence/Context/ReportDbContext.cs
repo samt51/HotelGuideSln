@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace ReportService.Persistence.Context
 {
-    
+
     public class ReportDbContext : DbContext
     {
         public ReportDbContext() { }
@@ -30,7 +30,7 @@ namespace ReportService.Persistence.Context
 
         #region DbSets
 
-        public DbSet<Report> Hotels { get; set; }
+        public DbSet<Report> Report { get; set; }
         #endregion
     }
 }

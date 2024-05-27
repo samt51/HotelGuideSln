@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using ReportService.Application.Consumers;
 using System.Reflection;
 
 namespace ReportService.Application
@@ -23,13 +24,18 @@ namespace ReportService.Application
 
             services.AddMassTransit(x =>
             {
+                x.AddConsumer<ReportStatusEventConsumer>();
                 // Default Port : 5672
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host("rabbitmq://localhost/", "/", host =>
+                    cfg.Host("localhost", "/", host =>
                     {
                         host.Username("guest");
                         host.Password("guest");
+                    });
+                    cfg.ReceiveEndpoint("get-report-status", e =>
+                    {
+                        e.ConfigureConsumer<ReportStatusEventConsumer>(context);
                     });
                 });
             });

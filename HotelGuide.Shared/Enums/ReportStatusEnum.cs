@@ -2,7 +2,8 @@
 {
     public enum ReportStatusEnum
     {
-        Ready=0,
-        Completed=1,
+        Ready=1,
+        Completed=2,
+        Error=3,
     }
 }

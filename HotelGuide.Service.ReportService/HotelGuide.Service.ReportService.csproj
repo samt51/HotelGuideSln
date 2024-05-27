@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HotelGuide.Shared\HotelGuide.Shared.csproj" />
+    <ProjectReference Include="..\ReportService.Application\ReportService.Application.csproj" />
+    <ProjectReference Include="..\ReportService.Persistence\ReportService.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
