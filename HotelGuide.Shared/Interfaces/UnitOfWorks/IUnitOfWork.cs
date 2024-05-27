@@ -8,11 +8,8 @@ namespace HotelGuide.Shared.Interfaces.UnitOfWorks
         IWriteRepository<T> GetWriteRepository<T>() where T : class, new();
         void OpenTransaction();
         Task<bool> SaveAsyncBool();
-        Task SaveAsync1();
         Task CommitAsync();
-        void Commit();
         void RollBack();
-        int Save();
     }
 
 }

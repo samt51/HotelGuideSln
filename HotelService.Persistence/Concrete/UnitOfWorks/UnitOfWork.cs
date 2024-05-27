@@ -14,10 +14,6 @@ namespace HotelService.Persistence.Concrete.UnitOfWorks
             this.dbContext = dbContext;
         }
 
-        public void Commit()
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task CommitAsync()
         {
@@ -37,36 +33,6 @@ namespace HotelService.Persistence.Concrete.UnitOfWorks
         }
 
         public int Save() => dbContext.SaveChanges();
-        public async Task<bool> SaveAsync()
-        {
-
-            try
-            {
-                var result = await dbContext.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                RollBack();
-                throw new Exception(ex.Message);
-
-            }
-        }
-
-        public async Task SaveAsync1()
-        {
-            try
-            {
-                await dbContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-
-                var error = ex.InnerException?.Message;
-
-                throw;
-            }
-        }
 
         public async Task<bool> SaveAsyncBool()
         {
