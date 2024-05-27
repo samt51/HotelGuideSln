@@ -14,11 +14,7 @@ namespace ReportService.Persistence.Concrete.UnitOfWorks
             this.dbContext = dbContext;
         }
 
-        public void Commit()
-        {
-            throw new NotImplementedException();
-        }
-
+     
         public async Task CommitAsync()
         {
             await dbContext.Database.CommitTransactionAsync();
@@ -36,37 +32,6 @@ namespace ReportService.Persistence.Concrete.UnitOfWorks
             dbContext.Database.RollbackTransaction();
         }
 
-        public int Save() => dbContext.SaveChanges();
-        public async Task<int> SaveAsync()
-        {
-
-            try
-            {
-                var result = await dbContext.SaveChangesAsync(); 
-                return result;
-            }
-            catch (Exception ex)
-            {
-                RollBack();
-                throw new Exception(ex.Message);
-
-            }
-        }
-
-        public async Task SaveAsync1()
-        {
-            try
-            {
-                await dbContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-
-                var error = ex.InnerException?.Message;
-
-                throw;
-            }
-        }
 
         IReadRepository<T> IUnitOfWork.GetReadRepository<T>() => new ReadRepository<T>(dbContext);
 
